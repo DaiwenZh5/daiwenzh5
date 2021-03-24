@@ -50,8 +50,8 @@
   <!-- import link -->
   
   
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="shortcut icon" href="/favicon.ico"/>
+  <link rel="manifest" href="/manifest.json"/>
   
 
   
@@ -1062,7 +1062,7 @@ var loadCSS = function( href, before, media, attributes ){
       if (href.length == 0) {
         // 选中文本
         if (window.getSelection().toString()) {
-          if ('' == 'true') {
+          if ('true' == 'true') {
             copyText.style.display = 'block';
             hrText.style.display = 'block';
           }
@@ -1175,6 +1175,65 @@ var loadCSS = function( href, before, media, attributes ){
 
 
 
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+    var clipboard = new ClipboardJS('.btn-copy', {
+        target: function (trigger) {
+            return trigger.nextElementSibling
+        }
+    });
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds)
+    }
+    function pjax_initCopyCode() {
+		if($(".highlight .code pre").length+$(".article pre code").length==0)return;
+        var copyHtml = '';
+        copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+        copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+        copyHtml += '</button>';
+        $(".highlight .code pre").before(copyHtml);
+        $(".article pre code").before(copyHtml);
+        clipboard.off('success').on('success', function (e) {
+            $.message({
+            title: '复制成功',
+            message: "代码已复制，请遵守相关授权协议。",
+            type: 'success'
+        });
+            let $btn = $(e.trigger);
+            $btn.addClass('copied');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-check-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPIED';
+            wait(function () {
+                $icon.removeClass('fa-check-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        });
+        clipboard.off('error').on('error', function (e) {
+            e.clearSelection();
+            let $btn = $(e.trigger);
+            $btn.addClass('copy-failed');
+            let $icon = $($btn.find('i'));
+            $icon.removeClass('fa-copy');
+            $icon.addClass('fa-times-circle');
+            let $span = $($btn.find('span'));
+            $span[0].innerText = 'COPY FAILED';
+            wait(function () {
+                $icon.removeClass('fa-times-circle');
+                $icon.addClass('fa-copy');
+                $span[0].innerText = 'COPY'
+            }, 2000)
+        })
+    }
+    $(function () {
+        pjax_initCopyCode()
+    });
+</script>
+
 
 
 
@@ -1262,6 +1321,16 @@ var loadCSS = function( href, before, media, attributes ){
   
 <script src="https://cdn.jsdelivr.net/npm/hexo-theme-volantis@4.1.6/source/js/app.min.js"></script>
 
+
+
+
+<script src="/js/message.js"></script>
+
+
+<script src="/sw.js"></script>
+
+
+<script src="/sw-register.js"></script>
 
 
 <!-- optional -->
@@ -1597,13 +1666,6 @@ document.addEventListener("pjax:success", listennSidebarTOC);
 
 <!-- more -->
 
-  
-  <script src="/sw-register.js"/>
-
-  <script src="/sw.js"/>
-
-
-
 
 
 
@@ -1693,6 +1755,8 @@ document.addEventListener("pjax:success", listennSidebarTOC);
         
         
         
+          pjax_initCopyCode();
+        
         
           pjax_valine();
         
@@ -1713,4 +1777,4 @@ document.addEventListener("pjax:success", listennSidebarTOC);
 
     
   </div>
-<script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
+<script data-inject src="/register.js?v1609064871951"></script><script data-inject src="/register.js?v1609064901453"></script><script data-inject src="/register.js?v1609064934295"></script><script data-inject src="/register.js?v1609067872338"></script><script data-inject src="/register.js?v1609069691631"></script><script data-inject src="/register.js?v1609069961470"></script><script data-inject src="/register.js?v1609070152173"></script><script data-inject src="/register.js?v1609070232308"></script><script data-inject src="/register.js?v1609070446636"></script><script data-inject src="/register.js?v1609070704210"></script><script data-inject src="/register.js?v1609070743425"></script><script data-inject src="/register.js?v1609070888339"></script><script data-inject src="/register.js?v1609070957783"></script><script data-inject src="/register.js?v1609070994195"></script><script async>window.onload=function(){var a=document.createElement('script'),b=document.getElementsByTagName('script')[0];a.type='text/javascript',a.async=!0,a.src='/sw-register.js?v='+Date.now(),b.parentNode.insertBefore(a,b)};</script></body></html>
