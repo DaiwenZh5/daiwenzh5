@@ -21,7 +21,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>分类：Mybatis - Z&#39;s blog</title>
+  <title>分类：mybatis - Z&#39;s blog</title>
   
 
   
@@ -419,14 +419,14 @@
   
     
     <h2 class="article-title" >
-      <a href="/2020/12/07/yuque/%E7%BB%93%E6%9E%9C%E9%9B%86%E6%8B%A6%E6%88%AA%E5%99%A8/">
-        结果集拦截器
+      <a href="/2020/11/27/yuque/Mybatis%20XML%20%E6%96%B0%E5%A2%9E%E5%BC%82%E5%B8%B8/">
+        Mybatis XML 新增异常
       </a>
     </h2>
   
   <div class='md'>
     
-      <h2 id="需求描述"><a href="#需求描述" class="headerlink" title="需求描述"></a>需求描述</h2><p>修改已有的结果集，可以对查询的字段与 Java 属性直接进行任意的映射。</p>
+      <h2 id="异常信息"><a href="#异常信息" class="headerlink" title="异常信息"></a>异常信息</h2><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">org<span class="variable">.springframework</span><span class="variable">.dao</span><span class="variable">.DataIntegrityViolationException</span>:</span><br><span class="line">### Error updating database.  Cause: java<span class="variable">.sql</span><span class="variable">.SQLException</span>: Field &#x27;id&#x27; doesn&#x27;t have a <span class="keyword">default</span> value</span><br><span class="line">### The error may exist in file [xxx<span class="variable">.xml</span>]</span><br><span class="line">### The error may involve xxxMapper<span class="variable">.insert</span>-Inline</span><br><span class="line">### The error occurred <span class="keyword">while</span> setting parameters</span><br><span class="line">### SQL: insert into xxx                                                 create_time )           values ( ?,             ?,             ?,             ?,                                                    ? )</span><br><span class="line">### Cause: java<span class="variable">.sql</span><span class="variable">.SQLException</span>: Field &#x27;id&#x27; doesn&#x27;t have a <span class="keyword">default</span> value</span><br><span class="line">; Field &#x27;id&#x27; doesn&#x27;t have a <span class="keyword">default</span> value; nested exception is java<span class="variable">.sql</span><span class="variable">.SQLException</span>: Field &#x27;id&#x27; doesn&#x27;t have a <span class="keyword">default</span> value</span><br></pre></td></tr></table></figure>
     
   </div>
   
@@ -436,15 +436,15 @@
           
           <a class='avatar' href='/'><img src='https://gitee.com/daiwenzh5/just-image/raw/master/blog/assets/avatar.png'></a>
         
-        <time>2020-12-07</time>
+        <time>2020-11-27</time>
         
           <span class="dot"></span>
-          <a class="category-link" href="/categories/Mybatis/">Mybatis</a><span class="sep"></span><a class="category-link" href="/categories/Mybatis/%E6%8B%A6%E6%88%AA%E5%99%A8/">拦截器</a>
+          <a class="category-link" href="/categories/mybatis/">mybatis</a><span class="sep"></span><a class="category-link" href="/categories/mybatis/xml/">xml</a>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2020/12/07/yuque/%E7%BB%93%E6%9E%9C%E9%9B%86%E6%8B%A6%E6%88%AA%E5%99%A8/'>
+          <a class='readmore' href='/2020/11/27/yuque/Mybatis%20XML%20%E6%96%B0%E5%A2%9E%E5%BC%82%E5%B8%B8/'>
             阅读全文
           </a>
         </div>
@@ -1816,66 +1816,6 @@ document.addEventListener("pjax:success", listennSidebarTOC);
       volantis.$topBtn.unbind('click');
       $('.menu a').unbind('click');
       $(window).unbind('resize');
-      $(window).unbind('scroll');
-      $(document).unbind('scroll');
-      $(document).unbind('click');
-      $('body').unbind('click');
-	  
-    });
-
-    document.addEventListener('pjax:complete', function () {
-      // 关于百度统计对 SPA 页面的处理：
-      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
-      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
-       
-
-      // 关于谷歌统计对 SPA 页面的处理：
-      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
-      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
-      
-	 
-
-      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
-      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
-      $('script[data-pjax], .pjax-reload script').each(function () {
-        $(this).parent().append($(this).remove());
-      });
-      try{
-          if (typeof $.fancybox == "undefined") {
-            SCload_fancybox();
-          } else {
-            pjax_fancybox();
-          }
-        
-        
-        
-        
-        
-          pjax_initCopyCode();
-        
-        
-          pjax_valine();
-        
-        
-        
-        
-      } catch (e) {
-        console.log(e);
-      }
-	  
-    });
-
-    document.addEventListener('pjax:error', function (e) {
-	  
-      window.location.href = e.triggerElement.href;
-    });
-</script>
-
-    
-  </div>
-</body>
-</html>
-indow).unbind('resize');
       $(window).unbind('scroll');
       $(document).unbind('scroll');
       $(document).unbind('click');

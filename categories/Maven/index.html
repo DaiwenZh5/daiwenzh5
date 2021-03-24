@@ -21,7 +21,7 @@
 
   <!-- 页面元数据 -->
   
-  <title>分类：maven - Z&#39;s blog</title>
+  <title>分类：Maven - Z&#39;s blog</title>
   
 
   
@@ -406,6 +406,12 @@
         
           
         
+          
+        
+          
+        
+          
+        
       
     
     
@@ -419,14 +425,14 @@
   
     
     <h2 class="article-title" >
-      <a href="/2020/12/03/yuque/%E8%81%9A%E5%90%88%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC%E5%8F%B7%E7%AE%A1%E7%90%86/">
-        聚合项目版本号管理
+      <a href="/2021/03/21/yuque/%E6%89%93%E5%8C%85%E5%A4%96%E9%83%A8%E4%BE%9D%E8%B5%96/">
+        打包外部依赖
       </a>
     </h2>
   
   <div class='md'>
     
-      <h2 id="需求描述"><a href="#需求描述" class="headerlink" title="需求描述"></a>需求描述</h2><p>在 Maven 聚合工程中，通常修改版本号是一件较为繁琐的过程，特别是子模块较多时，复制粘贴也得谨防遗漏，因此需要一款自动化工具，来完成机械的工作。</p>
+      <h2 id="需求描述"><a href="#需求描述" class="headerlink" title="需求描述"></a>需求描述</h2><p>由于公司 SDK 没有正式上线，只能提供 jar，需要手动添加依赖，在使用 maven 打包的时候提示找不到符号。</p>
     
   </div>
   
@@ -436,15 +442,156 @@
           
           <a class='avatar' href='/'><img src='https://gitee.com/daiwenzh5/just-image/raw/master/blog/assets/avatar.png'></a>
         
-        <time>2020-12-03</time>
+        <time>2021-03-21</time>
         
           <span class="dot"></span>
-          <a class="category-link" href="/categories/maven/">maven</a><span class="sep"></span><a class="category-link" href="/categories/maven/%E8%81%9A%E5%90%88%E9%A1%B9%E7%9B%AE/">聚合项目</a>
+          <a class="category-link" href="/categories/Maven/">Maven</a><span class="sep"></span><a class="category-link" href="/categories/Maven/%E6%89%93%E5%8C%85/">打包</a>
         
       </div>
       
         <div>
-          <a class='readmore' href='/2020/12/03/yuque/%E8%81%9A%E5%90%88%E9%A1%B9%E7%9B%AE%E7%89%88%E6%9C%AC%E5%8F%B7%E7%AE%A1%E7%90%86/'>
+          <a class='readmore' href='/2021/03/21/yuque/%E6%89%93%E5%8C%85%E5%A4%96%E9%83%A8%E4%BE%9D%E8%B5%96/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/02/06/yuque/%E5%8F%91%E5%B8%83%E5%88%B0%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93/">
+        发布到私有仓库
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <h2 id="需求描述"><a href="#需求描述" class="headerlink" title="需求描述"></a>需求描述</h2><p>需要将工具类发布到公司的私有仓库中，为了避免每次手动在页面上操作，此处借助 maven 命令行和 idea 启动项实现一键发布。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://gitee.com/daiwenzh5/just-image/raw/master/blog/assets/avatar.png'></a>
+        
+        <time>2021-02-06</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Maven/">Maven</a><span class="sep"></span><a class="category-link" href="/categories/Maven/%E5%91%BD%E4%BB%A4%E8%A1%8C/">命令行</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2021/02/06/yuque/%E5%8F%91%E5%B8%83%E5%88%B0%E7%A7%81%E6%9C%89%E4%BB%93%E5%BA%93/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/12/04/yuque/%E8%87%AA%E5%8A%A8%E5%8F%91%E8%A1%8C%E6%8F%92%E4%BB%B6/">
+        自动发行插件
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <h2 id="需求描述"><a href="#需求描述" class="headerlink" title="需求描述"></a>需求描述</h2><p>在项目迭代过程中，需要为不同的版本号打上 Tag，对于发行的稳定版本则需要上传到指定的仓库。手动操作则过于繁琐，且无法统一 Tag 的样式，因此需要一款实现自动的可配置的发行工具。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://gitee.com/daiwenzh5/just-image/raw/master/blog/assets/avatar.png'></a>
+        
+        <time>2020-12-04</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Maven/">Maven</a><span class="sep"></span><a class="category-link" href="/categories/Maven/%E6%8F%92%E4%BB%B6/">插件</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/12/04/yuque/%E8%87%AA%E5%8A%A8%E5%8F%91%E8%A1%8C%E6%8F%92%E4%BB%B6/'>
+            阅读全文
+          </a>
+        </div>
+      
+    </div>
+  
+
+</div>
+
+          </div>
+        
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2020/04/10/yuque/Maven%20%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%89%93%E5%8C%85/">
+        Maven 多环境打包
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <h2 id="📃-需求描述"><a href="#📃-需求描述" class="headerlink" title="📃 需求描述"></a>📃 需求描述</h2><p>项目在开发时需要进行多环境部署打包，每个环境间的配置信息并不互通，若要进行人为的手动替换，不但增加了机械且额外的工作量，还容易出错，因此需要通过配置 Maven，使得能够为不同环境打包不同的配置信息。</p>
+    
+  </div>
+  
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://gitee.com/daiwenzh5/just-image/raw/master/blog/assets/avatar.png'></a>
+        
+        <time>2020-04-10</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Maven/">Maven</a><span class="sep"></span><a class="category-link" href="/categories/Maven/%E6%8F%92%E4%BB%B6/">插件</a>
+        
+      </div>
+      
+        <div>
+          <a class='readmore' href='/2020/04/10/yuque/Maven%20%E5%A4%9A%E7%8E%AF%E5%A2%83%E6%89%93%E5%8C%85/'>
             阅读全文
           </a>
         </div>
@@ -1733,149 +1880,6 @@ function listennSidebarTOC() {
 
   function createIntersectionObserver(marginTop) {
     marginTop = Math.floor(marginTop + 10000);
-    let intersectionObserver = new IntersectionObserver(
-      (entries, observe) => {
-        let scrollHeight = document.documentElement.scrollHeight + 100;
-        if (scrollHeight > marginTop) {
-          observe.disconnect();
-          createIntersectionObserver(scrollHeight);
-          return;
-        }
-        let index = findIndex(entries);
-        activateNavByIndex(navItems[index]);
-      },
-      {
-        rootMargin: marginTop + "px 0px -100% 0px",
-        threshold: 0,
-      }
-    );
-    sections.forEach((element) => {
-      element && intersectionObserver.observe(element);
-    });
-  }
-  createIntersectionObserver(document.documentElement.scrollHeight);
-}
-
-document.addEventListener("DOMContentLoaded", listennSidebarTOC);
-document.addEventListener("pjax:success", listennSidebarTOC);
-</script>
-
-<!-- more -->
-
-
-
-
-    
-      
-
-
-<script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script>
-
-
-<script>
-    var pjax;
-    document.addEventListener('DOMContentLoaded', function () {
-      pjax = new Pjax({
-        elements: 'a[href]:not([href^="#"]):not([href="javascript:void(0)"]):not([pjax-fancybox])',
-        selectors: [
-          "title",
-          "#l_cover",
-          "#pjax-container",
-          "#pjax-header-nav-list"
-        ],
-        cacheBust: false,   // url 地址追加时间戳，用以避免浏览器缓存
-        timeout: 5000
-      });
-    });
-
-    document.addEventListener('pjax:send', function (e) {
-      //window.stop(); // 相当于点击了浏览器的停止按钮
-
-      try {
-        var currentUrl = window.location.pathname;
-        var targetUrl = e.triggerElement.href;
-        var banUrl = [""];
-        if (banUrl[0] != "") {
-          banUrl.forEach(item => {
-            if(currentUrl.indexOf(item) != -1 || targetUrl.indexOf(item) != -1) {
-              window.location.href = targetUrl;
-            }
-          });
-        }
-      } catch (error) {}
-
-      window.subData = null; // 移除标题（用于一二级导航栏切换处）
-      if (typeof $.fancybox != "undefined") {
-        $.fancybox.close();    // 关闭弹窗
-      }
-      volantis.$switcher.removeClass('active'); // 关闭移动端激活的搜索框
-      volantis.$header.removeClass('z_search-open'); // 关闭移动端激活的搜索框
-      volantis.$wrapper.removeClass('sub'); // 跳转页面时关闭二级导航
-
-      // 解绑事件 避免重复监听
-      volantis.$topBtn.unbind('click');
-      $('.menu a').unbind('click');
-      $(window).unbind('resize');
-      $(window).unbind('scroll');
-      $(document).unbind('scroll');
-      $(document).unbind('click');
-      $('body').unbind('click');
-	  
-    });
-
-    document.addEventListener('pjax:complete', function () {
-      // 关于百度统计对 SPA 页面的处理：
-      // 方案一：百度统计>管理>单页应用设置中，打开开启按钮即可对SPA进行统计。 https://tongji.baidu.com/web/help/article?id=324
-      // 方案二：取消注释下列代码。 https://tongji.baidu.com/web/help/article?id=235
-       
-
-      // 关于谷歌统计对 SPA 页面的处理：
-      // 当应用以动态方式加载内容并更新地址栏中的网址时，也应该更新通过 gtag.js 存储的网页网址。
-      // https://developers.google.cn/analytics/devguides/collection/gtagjs/single-page-applications?hl=zh-cn
-      
-	 
-
-      $('.nav-main').find('.list-v').not('.menu-phone').removeAttr("style",""); // 移除小尾巴的移除
-      $('.menu-phone.list-v').removeAttr("style",""); // 移除小尾巴的移除
-      $('script[data-pjax], .pjax-reload script').each(function () {
-        $(this).parent().append($(this).remove());
-      });
-      try{
-          if (typeof $.fancybox == "undefined") {
-            SCload_fancybox();
-          } else {
-            pjax_fancybox();
-          }
-        
-        
-        
-        
-        
-          pjax_initCopyCode();
-        
-        
-          pjax_valine();
-        
-        
-        
-        
-      } catch (e) {
-        console.log(e);
-      }
-	  
-    });
-
-    document.addEventListener('pjax:error', function (e) {
-	  
-      window.location.href = e.triggerElement.href;
-    });
-</script>
-
-    
-  </div>
-</body>
-</html>
- marginTop = Math.floor(marginTop + 10000);
     let intersectionObserver = new IntersectionObserver(
       (entries, observe) => {
         let scrollHeight = document.documentElement.scrollHeight + 100;
