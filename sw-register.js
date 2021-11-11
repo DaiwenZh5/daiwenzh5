@@ -1,1 +1,1 @@
-navigator.serviceWorker&&navigator.serviceWorker.register('/sw.js?v=20211110195415').then(function(){navigator.serviceWorker.addEventListener('message',function(a){'sw.update'===a.data&&$.message({title:'更新成功',message:'',type:'success'});})});
+navigator.serviceWorker&&navigator.serviceWorker.register('/sw.js?v=20211111103805').then(function(){navigator.serviceWorker.addEventListener('message',function(a){'sw.update'===a.data&&$.message({title:'更新成功',message:'',type:'success'});})});
