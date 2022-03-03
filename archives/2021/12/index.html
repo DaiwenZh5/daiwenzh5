@@ -5,6 +5,8 @@
   <!-- SEO相关 -->
   
     
+      <meta name="robots" content="noindex,follow">
+    
   
   <!-- 渲染优化 -->
   <meta http-equiv='x-dns-prefetch-control' content='on' />
@@ -19,11 +21,9 @@
 
   <!-- 页面元数据 -->
   
-  <title>RestTemplate 使用 - Z&#39;s blog</title>
+  <title>归档：2021/12 - Z&#39;s blog</title>
   
 
-  
-    <meta name="description" content="📑 需求描述RestTemplate 是 spring 封装了  HttpClient 的一些模板操作的工具类，通过该工具可以很轻松的实现在程序中发送 Http 请求。">
   
 
   <!-- feed -->
@@ -72,7 +72,7 @@
 <body>
   
 
-<header id="l_header" class="l_header auto shadow blur show" style='opacity: 0' >
+<header id="l_header" class="l_header auto shadow blur " style='opacity: 0' >
   <div class='container'>
   <div id='wrapper'>
     <div class='nav-sub'>
@@ -327,7 +327,7 @@
     <div id="l_cover">
   
     
-        <div id="full" class='cover-wrapper post dock' style="display: none;">
+        <div id="half" class='cover-wrapper  dock' style="display: ;">
           
             <div class='cover-bg lazyload placeholder' data-bg="/images/swipper/1.jpg"></div>
           
@@ -396,225 +396,73 @@
         
 
 <div class='l_main'>
-  <article class="article post white-box reveal md shadow article-type-post" id="post" itemscope itemprop="blogPost">
-  
-
-
-  
-  <div class="article-meta" id="top">
+	
+		
+  <section class="post-list">
     
-    
-    
-      <h1 class="title">
-        RestTemplate 使用
-      </h1>
-      <div class='new-meta-box'>
-        
-          
-            
-<div class='new-meta-item author'>
-  <a class='author' href="/" rel="nofollow">
-    <img no-lazy src="https://gitee.com/daiwenzh5/just-image/raw/master/blog/assets/avatar.png">
-    <p>daiwenzh5</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>
-    <p>发布于：2020年4月30日</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  <div class="new-meta-item browse leancloud">
-    <a class='notlink'>
       
-      <div id="lc-pv" data-title="RestTemplate 使用" data-path="/2020/04/30/yuque/RestTemplate%20%E4%BD%BF%E7%94%A8/">
-        <i class="fas fa-eye fa-fw" aria-hidden="true"></i>
-        <span id='number'><i class="fas fa-circle-notch fa-spin fa-fw" aria-hidden="true"></i></span>
-        次浏览
-      </div>
-    </a>
-  </div>
-
-
+        
           
         
-      </div>
+      
+    
+    
+      
+        
+          <div class='post-wrapper'>
+            <div class="post post-v3 white-box reveal shadow">
+  
+  
+  
+  
+    
+    <h2 class="article-title" >
+      <a href="/2021/12/09/yuque/async%20setup()%20%E5%BC%95%E5%8F%91%E5%BC%82%E5%B8%B8/">
+        async setup() 引发异常
+      </a>
+    </h2>
+  
+  <div class='md'>
+    
+      <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>在 uniapp 项目中使用 vue3 开发，在 setup script 标签中使用顶层 await 语句，导致页面空白，而控制台打印异常。</p>
     
   </div>
-
-
   
-  <h2 id="📑-需求描述"><a href="#📑-需求描述" class="headerlink" title="📑 需求描述"></a>📑 需求描述</h2><p><code>RestTemplate</code> 是 spring 封装了  <code>HttpClient</code> 的一些模板操作的工具类，通过该工具可以很轻松的实现在程序中发送 Http 请求。</p>
-<h2 id="⚙-配置"><a href="#⚙-配置" class="headerlink" title="⚙ 配置"></a>⚙ 配置</h2><p>可以通过直接实例化对象来使用  <code>RestTemplate</code>，但在 spring 中，更好的方式是将其声明成一个组件，交由 spring 托管。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> RestTemplate <span class="title">restTemplate</span><span class="params">(ClientHttpRequestFactory factory)</span> </span>&#123;</span><br><span class="line">    RestTemplate restTemplate = <span class="keyword">new</span> RestTemplate(factory);</span><br><span class="line">    <span class="comment">// 其他设置，如：拦截器、消息处理器等</span></span><br><span class="line">    <span class="keyword">return</span> restTemplate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="🚧-拦截器"><a href="#🚧-拦截器" class="headerlink" title="🚧 拦截器"></a>🚧 拦截器</h2><p>拦截器需要通过实现  <code>ClientHttpRequestInterceptor</code>  接口（或直接使用 lambda 函数），重载其  <code>intercept</code>  方法，在其中添加自定义动作，但需要在通过验证后放行（否则请求会被拦截）。在  <code>RestTemplate</code>  中，可以存在了一个存放拦截器的集合，将自定义拦截器加入其中接口。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义自定义拦截器</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomInterceptor</span> <span class="keyword">implements</span> <span class="title">ClientHttpRequestInterceptor</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ClientHttpResponse <span class="title">intercept</span><span class="params">(HttpRequest request, <span class="keyword">byte</span>[] body, ClientHttpRequestExecution execution)</span> <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 自定义方法体</span></span><br><span class="line">        ...</span><br><span class="line">        <span class="comment">// 执行完毕后放行请求</span></span><br><span class="line">        <span class="keyword">return</span> execution.execute(request, body);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 添加拦截器</span></span><br><span class="line">restTemplate.getInterceptors().add(<span class="keyword">new</span> CustomInterceptor())</span><br></pre></td></tr></table></figure>
-
-<p>通常可以在拦截器中添加权限验证或日志记录。</p>
-<h2 id="💬-消息转换器"><a href="#💬-消息转换器" class="headerlink" title="💬  消息转换器"></a>💬  消息转换器</h2><p><code>RestTemplate</code>  中默认定义了各种消息处理器，在需要替换时，需要将原有的处理器去除之后在添加，并且其消息处理类型要一致。<code>RestTemplate</code>  中使用 <code>Jackson</code>  来处理 json 以及 xml 数据，通常会将其替换成阿里的 <code>FastJson</code>。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 重新设置了消息转换器集合，通过遍历过滤了原有的 Jackson 处理器，最后添加了 FastJson 处理器</span></span><br><span class="line"><span class="comment">// 也可以直接在原有的 list 中使用 remove 去除，再添加</span></span><br><span class="line">List&lt;HttpMessageConverter&lt;?&gt;&gt; converters = restTemplate.getMessageConverters();</span><br><span class="line">List&lt;HttpMessageConverter&lt;?&gt;&gt; convertersValid = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (HttpMessageConverter&lt;?&gt; converter : converters) &#123;</span><br><span class="line">    <span class="keyword">if</span> (converter <span class="keyword">instanceof</span> MappingJackson2HttpMessageConverter</span><br><span class="line">            || converter <span class="keyword">instanceof</span> MappingJackson2XmlHttpMessageConverter) &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    convertersValid.add(converter);</span><br><span class="line">&#125;</span><br><span class="line">convertersValid.add(fastJsonHttpMessageConverter());</span><br><span class="line">restTemplate.setMessageConverters(convertersValid);</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * fastJson 消息转换器</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> fastJson 消息转换器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> FastJsonHttpMessageConverter <span class="title">fastJsonHttpMessageConverter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;MediaType&gt; mediaTypes = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    mediaTypes.add(MediaType.APPLICATION_JSON);</span><br><span class="line">    FastJsonConfig fastJsonConfig = <span class="keyword">new</span> FastJsonConfig();</span><br><span class="line">    fastJsonConfig.setSerializerFeatures(SerializerFeature.DisableCircularReferenceDetect,</span><br><span class="line">            SerializerFeature.WriteMapNullValue,</span><br><span class="line">            SerializerFeature.WriteDateUseDateFormat);</span><br><span class="line">    fastJsonConfig.setDateFormat(<span class="string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);</span><br><span class="line">    GsonHttpMessageConverter gsonHttpMessageConverter = <span class="keyword">new</span> GsonHttpMessageConverter();</span><br><span class="line">    gsonHttpMessageConverter.setSupportedMediaTypes(mediaTypes);</span><br><span class="line">    FastJsonHttpMessageConverter fastConverter = <span class="keyword">new</span> FastJsonHttpMessageConverter();</span><br><span class="line">    fastConverter.setSupportedMediaTypes(mediaTypes);</span><br><span class="line">    fastConverter.setFastJsonConfig(fastJsonConfig);</span><br><span class="line">    <span class="keyword">return</span> fastConverter;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="🐘-返回泛型对象"><a href="#🐘-返回泛型对象" class="headerlink" title="🐘 返回泛型对象"></a>🐘 返回泛型对象</h2><p><code>RestTemplate</code> 无法直接准确地返回包含泛型的对象（如 <code>List&lt;String&gt;</code>  最终只会被识别为 <code>List</code> ）。此处可以通过其  <code>exchange</code> 方法中的  <code>ParameterizedTypeReference</code> 参数，设定一个仅包含类型的空对象，即可记录并返回准确的泛型对象。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ParameterizedTypeReference&lt;List&lt;MyBean&gt;&gt; myBean =</span><br><span class="line">    <span class="keyword">new</span> ParameterizedTypeReference&lt;List&lt;MyBean&gt;&gt;() &#123;&#125;;</span><br><span class="line">ResponseEntity&lt;List&lt;MyBean&gt;&gt; response =</span><br><span class="line">           template.exchange(<span class="string">&quot;https://example.com&quot;</span>,HttpMethod.GET, <span class="keyword">null</span>, myBean);</span><br></pre></td></tr></table></figure>
-
-<p><strong>注意：</strong>其中的  <code>ParameterizedTypeReference</code>  参数是不能通过泛型方法来封装的，因为封装的泛型依然会被擦除。本质上，该方法是通过生成匿名类（类中的泛型是不会被擦除的，泛型的目的之一是避免生成不必要的类）来记录泛型信息。</p>
-
-  
-  
-    
-    <div class='footer'>
+    <div class='meta-v3' line_style='solid'>
+      <div>
+        
+          
+          <a class='avatar' href='/'><img src='https://gitee.com/daiwenzh5/just-image/raw/master/blog/assets/avatar.png'></a>
+        
+        <time>2021-12-09</time>
+        
+          <span class="dot"></span>
+          <a class="category-link" href="/categories/Vue3/">Vue3</a><span class="sep"></span><a class="category-link" href="/categories/Vue3/%E5%BC%82%E5%B8%B8/">异常</a>
+        
+      </div>
       
-      
-      
-        <div class='copyright'>
-          <blockquote>
-            
-              
-                <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-              
-            
-              
-                <p>本文永久链接是：<a href=http://daiwenzh5.github.io/2020/04/30/yuque/RestTemplate%20%E4%BD%BF%E7%94%A8/>http://daiwenzh5.github.io/2020/04/30/yuque/RestTemplate%20%E4%BD%BF%E7%94%A8/</a></p>
-              
-            
-          </blockquote>
+        <div>
+          <a class='readmore' href='/2021/12/09/yuque/async%20setup()%20%E5%BC%95%E5%8F%91%E5%BC%82%E5%B8%B8/'>
+            阅读全文
+          </a>
         </div>
       
-      
     </div>
   
-  
-    
 
-
-  <div class='article-meta' id="bottom">
-    <div class='new-meta-box'>
-      
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2021-11-22T21:55:06+08:00">
-  <a class='notlink'>
-    <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2021年11月22日</p>
-  </a>
 </div>
 
+          </div>
         
       
-        
-          
-
-        
-      
-        
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
     
-      
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://daiwenzh5.github.io/2020/04/30/yuque/RestTemplate%20%E4%BD%BF%E7%94%A8/&title=RestTemplate 使用 - Z's blog&summary=📑 需求描述RestTemplate 是 spring 封装了  HttpClient 的一些模板操作的工具类，通过该工具可以很轻松的实现在程序中发送 Http 请求。"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qq.png" srcset="data:image/png;base64,666">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http://daiwenzh5.github.io/2020/04/30/yuque/RestTemplate%20%E4%BD%BF%E7%94%A8/&title=RestTemplate 使用 - Z's blog&summary=📑 需求描述RestTemplate 是 spring 封装了  HttpClient 的一些模板操作的工具类，通过该工具可以很轻松的实现在程序中发送 Http 请求。"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/qzone.png" srcset="data:image/png;base64,666">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer noopener"
-          
-          target="_blank" href="http://service.weibo.com/share/share.php?url=http://daiwenzh5.github.io/2020/04/30/yuque/RestTemplate%20%E4%BD%BF%E7%94%A8/&title=RestTemplate 使用 - Z's blog&summary=📑 需求描述RestTemplate 是 spring 封装了  HttpClient 的一些模板操作的工具类，通过该工具可以很轻松的实现在程序中发送 Http 请求。"
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" class="lazyload" data-srcset="https://cdn.jsdelivr.net/gh/volantis-x/cdn-org/logo/128/weibo.png" srcset="data:image/png;base64,666">
-          
-        </a>
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
-
-
-
-        
-      
-    </div>
-  </div>
-
-
+  </section>
   
+    
   
 
-  
-    <div class="prev-next">
-      
-        <a class='prev' href='/2020/05/11/yuque/Hexo%20%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/'>
-          <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>Hexo 博客搭建</p>
-          <p class='content'>文章摘要为了在列表页面隐藏全文，实现“阅读全文”的折叠按钮，需要在 md 文件上手动添加标记  &lt;!-- more --&gt;，对文件本身产生了侵入，更好的方式是通过  npm inst...</p>
-        </a>
-      
-      
-        <a class='next' href='/2020/04/23/yuque/%F0%9F%95%B7%20%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/'>
-          <p class='title'>🕷 统一异常处理<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-          <p class='content'>🚩 需求描述将接口访问所有异常进行统一处理。在业务逻辑编写时，应该将所有可预知的异常定义好，并设定唯一的错误代码，在异常发生时，通过统一的返回值自动包装，提供给前端优化的错误提示，并能够通过错...</p>
-        </a>
-      
-    </div>
-  
-</article>
 
-
-  
-
-  <article class="post white-box reveal shadow" id="comments">
-    <p ct><i class='fas fa-comments'></i> 评论</p>
-    
-    <div id="valine_container" class="valine_thread">
-  <i class="fas fa-cog fa-spin fa-fw fa-2x"></i>
-</div>
-
-  </article>
-
-
-
-
-
-
+	
 </div>
 <aside class='l_side'>
   
@@ -622,28 +470,342 @@
     
     
 
+<section class="widget blogger shadow desktop mobile">
+  <div class='content'>
+    
+      
+        <a class='avatar flat-box rectangle' href='/'>
+          <img no-lazy src='https://gitee.com/daiwenzh5/just-image/raw/master/blog/assets/avatar.png'/>
+        </a>
+      
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">Z's blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml"
+              class="social fas fa-rss flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="mailto:daiwenzh5@163.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+          
+            <a href="https://github.com/daiwenzh5/"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
 
+  
 
-  <section class="widget toc-wrapper shadow desktop mobile" id="toc-div" >
+  
+    
+    
+  
+
+  <section class="widget category shadow desktop">
     
   <header>
     
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
     
   </header>
 
 
     <div class='content'>
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%91-%E9%9C%80%E6%B1%82%E6%8F%8F%E8%BF%B0"><span class="toc-text">📑 需求描述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%99-%E9%85%8D%E7%BD%AE"><span class="toc-text">⚙ 配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%A7-%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="toc-text">🚧 拦截器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%AC-%E6%B6%88%E6%81%AF%E8%BD%AC%E6%8D%A2%E5%99%A8"><span class="toc-text">💬  消息转换器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%90%98-%E8%BF%94%E5%9B%9E%E6%B3%9B%E5%9E%8B%E5%AF%B9%E8%B1%A1"><span class="toc-text">🐘 返回泛型对象</span></a></li></ol>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/Intellij-Idea/" href="/categories/Intellij-Idea/"
+            id="categoriesIntellij-Idea"
+            ><div class='name'>Intellij Idea</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Intellij-Idea/plugin/" href="/categories/Intellij-Idea/plugin/"
+            id="categoriesIntellij-Ideaplugin"
+            ><div class='name'>plugin</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/JDK8/" href="/categories/JDK8/"
+            id="categoriesJDK8"
+            ><div class='name'>JDK8</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/JDK8/Time/" href="/categories/JDK8/Time/"
+            id="categoriesJDK8Time"
+            ><div class='name'>Time</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Linux/" href="/categories/Linux/"
+            id="categoriesLinux"
+            ><div class='name'>Linux</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Linux/VPN/" href="/categories/Linux/VPN/"
+            id="categoriesLinuxVPN"
+            ><div class='name'>VPN</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Maven/" href="/categories/Maven/"
+            id="categoriesMaven"
+            ><div class='name'>Maven</div><div class='badge'>(4)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Maven/%E5%91%BD%E4%BB%A4%E8%A1%8C/" href="/categories/Maven/%E5%91%BD%E4%BB%A4%E8%A1%8C/"
+            id="categoriesMavenE591BDE4BBA4E8A18C"
+            ><div class='name'>命令行</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Maven/%E6%89%93%E5%8C%85/" href="/categories/Maven/%E6%89%93%E5%8C%85/"
+            id="categoriesMavenE68993E58C85"
+            ><div class='name'>打包</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Maven/%E6%8F%92%E4%BB%B6/" href="/categories/Maven/%E6%8F%92%E4%BB%B6/"
+            id="categoriesMavenE68F92E4BBB6"
+            ><div class='name'>插件</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Mybatis/" href="/categories/Mybatis/"
+            id="categoriesMybatis"
+            ><div class='name'>Mybatis</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Mybatis/%E6%8B%A6%E6%88%AA%E5%99%A8/" href="/categories/Mybatis/%E6%8B%A6%E6%88%AA%E5%99%A8/"
+            id="categoriesMybatisE68BA6E688AAE599A8"
+            ><div class='name'>拦截器</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Mybatis/%E7%BB%93%E6%9E%9C%E9%9B%86/" href="/categories/Mybatis/%E7%BB%93%E6%9E%9C%E9%9B%86/"
+            id="categoriesMybatisE7BB93E69E9CE99B86"
+            ><div class='name'>结果集</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Spring-Boot/" href="/categories/Spring-Boot/"
+            id="categoriesSpring-Boot"
+            ><div class='name'>Spring Boot</div><div class='badge'>(5)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Spring-Boot/Rest-Template/" href="/categories/Spring-Boot/Rest-Template/"
+            id="categoriesSpring-BootRest-Template"
+            ><div class='name'>Rest Template</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Spring-Boot/Unit-Test/" href="/categories/Spring-Boot/Unit-Test/"
+            id="categoriesSpring-BootUnit-Test"
+            ><div class='name'>Unit Test</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Spring-Boot/WebFilter/" href="/categories/Spring-Boot/WebFilter/"
+            id="categoriesSpring-BootWebFilter"
+            ><div class='name'>WebFilter</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Spring-Boot/%E5%8F%82%E6%95%B0%E5%A4%84%E7%90%86/" href="/categories/Spring-Boot/%E5%8F%82%E6%95%B0%E5%A4%84%E7%90%86/"
+            id="categoriesSpring-BootE58F82E695B0E5A484E79086"
+            ><div class='name'>参数处理</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Spring-Boot/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" href="/categories/Spring-Boot/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/"
+            id="categoriesSpring-BootE9858DE7BDAEE69687E4BBB6"
+            ><div class='name'>配置文件</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Spring/" href="/categories/Spring/"
+            id="categoriesSpring"
+            ><div class='name'>Spring</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Spring/Feign/" href="/categories/Spring/Feign/"
+            id="categoriesSpringFeign"
+            ><div class='name'>Feign</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Spring/%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/" href="/categories/Spring/%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/"
+            id="categoriesSpringE58F82E695B0E6A0A1E9AA8C"
+            ><div class='name'>参数校验</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Typescript/" href="/categories/Typescript/"
+            id="categoriesTypescript"
+            ><div class='name'>Typescript</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Typescript/%E8%A3%85%E9%A5%B0%E5%99%A8/" href="/categories/Typescript/%E8%A3%85%E9%A5%B0%E5%99%A8/"
+            id="categoriesTypescriptE8A385E9A5B0E599A8"
+            ><div class='name'>装饰器</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Vue3/" href="/categories/Vue3/"
+            id="categoriesVue3"
+            ><div class='name'>Vue3</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Vue3/%E5%BC%82%E5%B8%B8/" href="/categories/Vue3/%E5%BC%82%E5%B8%B8/"
+            id="categoriesVue3E5BC82E5B8B8"
+            ><div class='name'>异常</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/maven/" href="/categories/maven/"
+            id="categoriesmaven"
+            ><div class='name'>maven</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/maven/%E8%81%9A%E5%90%88%E9%A1%B9%E7%9B%AE/" href="/categories/maven/%E8%81%9A%E5%90%88%E9%A1%B9%E7%9B%AE/"
+            id="categoriesmavenE8819AE59088E9A1B9E79BAE"
+            ><div class='name'>聚合项目</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/mybatis/" href="/categories/mybatis/"
+            id="categoriesmybatis"
+            ><div class='name'>mybatis</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/mybatis/xml/" href="/categories/mybatis/xml/"
+            id="categoriesmybatisxml"
+            ><div class='name'>xml</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%89%8D%E7%AB%AF/" href="/categories/%E5%89%8D%E7%AB%AF/"
+            id="categoriesE5898DE7ABAF"
+            ><div class='name'>前端</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%89%8D%E7%AB%AF/Hexo/" href="/categories/%E5%89%8D%E7%AB%AF/Hexo/"
+            id="categoriesE5898DE7ABAFHexo"
+            ><div class='name'>Hexo</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%B7%A5%E5%85%B7/" href="/categories/%E5%B7%A5%E5%85%B7/"
+            id="categoriesE5B7A5E585B7"
+            ><div class='name'>工具</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%B7%A5%E5%85%B7/Intellij-Plugin/" href="/categories/%E5%B7%A5%E5%85%B7/Intellij-Plugin/"
+            id="categoriesE5B7A5E585B7Intellij-Plugin"
+            ><div class='name'>Intellij Plugin</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%B7%A5%E5%85%B7/Java/" href="/categories/%E5%B7%A5%E5%85%B7/Java/"
+            id="categoriesE5B7A5E585B7Java"
+            ><div class='name'>Java</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/"
+            id="categoriesE5BEAEE69C8DE58AA1"
+            ><div class='name'>微服务</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/Spring-Cloud/" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/Spring-Cloud/"
+            id="categoriesE5BEAEE69C8DE58AA1Spring-Cloud"
+            ><div class='name'>Spring Cloud</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/dubbo/" href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/dubbo/"
+            id="categoriesE5BEAEE69C8DE58AA1dubbo"
+            ><div class='name'>dubbo</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"
+            id="categoriesE695B0E68DAEE5BA93"
+            ><div class='name'>数据库</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle/" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle/"
+            id="categoriesE695B0E68DAEE5BA93Oracle"
+            ><div class='name'>Oracle</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/" href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/"
+            id="categoriesE78988E69CACE68EA7E588B6"
+            ><div class='name'>版本控制</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/windows/" href="/categories/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/windows/"
+            id="categoriesE78988E69CACE68EA7E588B6windows"
+            ><div class='name'>windows</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E7%BC%93%E5%AD%98/" href="/categories/%E7%BC%93%E5%AD%98/"
+            id="categoriesE7BC93E5AD98"
+            ><div class='name'>缓存</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E7%BC%93%E5%AD%98/Redis/" href="/categories/%E7%BC%93%E5%AD%98/Redis/"
+            id="categoriesE7BC93E5AD98Redis"
+            ><div class='name'>Redis</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/%E8%BE%B9%E7%BC%98%E6%8A%80%E6%9C%AF/" href="/categories/%E8%BE%B9%E7%BC%98%E6%8A%80%E6%9C%AF/"
+            id="categoriesE8BEB9E7BC98E68A80E69CAF"
+            ><div class='name'>边缘技术</div><div class='badge'>(1)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/%E8%BE%B9%E7%BC%98%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/" href="/categories/%E8%BE%B9%E7%BC%98%E6%8A%80%E6%9C%AF/%E5%89%8D%E7%AB%AF/"
+            id="categoriesE8BEB9E7BC98E68A80E69CAFE5898DE7ABAF"
+            ><div class='name'>前端</div><div class='badge'>(1)</div></a></li>
+        
+      </ul>
     </div>
   </section>
 
 
   
 
+  
+    
+    
+  
+
+  <section class="widget tagcloud shadow desktop mobile">
+    
+  <header>
+    
+      <a href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <a href="/tags/Blog/" style="font-size: 14px; color: #999">Blog</a> <a href="/tags/Bootstrap/" style="font-size: 14px; color: #999">Bootstrap</a> <a href="/tags/Centos/" style="font-size: 14px; color: #999">Centos</a> <a href="/tags/Config/" style="font-size: 14px; color: #999">Config</a> <a href="/tags/Configuration/" style="font-size: 14px; color: #999">Configuration</a> <a href="/tags/Deploy/" style="font-size: 14px; color: #999">Deploy</a> <a href="/tags/Feign/" style="font-size: 14px; color: #999">Feign</a> <a href="/tags/Github-Pages/" style="font-size: 14px; color: #999">Github Pages</a> <a href="/tags/HTTP/" style="font-size: 14px; color: #999">HTTP</a> <a href="/tags/Hexo/" style="font-size: 14px; color: #999">Hexo</a> <a href="/tags/Http-%E8%AF%B7%E6%B1%82/" style="font-size: 14px; color: #999">Http 请求</a> <a href="/tags/Idea/" style="font-size: 14px; color: #999">Idea</a> <a href="/tags/Install/" style="font-size: 14px; color: #999">Install</a> <a href="/tags/Intellij-Idea/" style="font-size: 14px; color: #999">Intellij Idea</a> <a href="/tags/Intellij-Plugin/" style="font-size: 14px; color: #999">Intellij Plugin</a> <a href="/tags/JDK8/" style="font-size: 14px; color: #999">JDK8</a> <a href="/tags/JSON/" style="font-size: 14px; color: #999">JSON</a> <a href="/tags/Jar-%E5%86%B2%E7%AA%81/" style="font-size: 14px; color: #999">Jar 冲突</a> <a href="/tags/Java/" style="font-size: 14px; color: #999">Java</a> <a href="/tags/Javascript/" style="font-size: 14px; color: #999">Javascript</a> <a href="/tags/JetCache/" style="font-size: 14px; color: #999">JetCache</a> <a href="/tags/Lib/" style="font-size: 14px; color: #999">Lib</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/LocalDate/" style="font-size: 14px; color: #999">LocalDate</a> <a href="/tags/Lombok/" style="font-size: 14px; color: #999">Lombok</a> <a href="/tags/MVC/" style="font-size: 14px; color: #999">MVC</a> <a href="/tags/Maven/" style="font-size: 20.67px; color: #6c6c6c">Maven</a> <a href="/tags/Mock/" style="font-size: 14px; color: #999">Mock</a> <a href="/tags/Mybatis/" style="font-size: 17.33px; color: #828282">Mybatis</a> <a href="/tags/OpenConnect/" style="font-size: 14px; color: #999">OpenConnect</a> <a href="/tags/Rest-Template/" style="font-size: 14px; color: #999">Rest Template</a> <a href="/tags/Restful/" style="font-size: 14px; color: #999">Restful</a> <a href="/tags/ResultMap/" style="font-size: 14px; color: #999">ResultMap</a> <a href="/tags/Spring/" style="font-size: 14px; color: #999">Spring</a> <a href="/tags/Spring-Boot/" style="font-size: 24px; color: #555">Spring Boot</a> <a href="/tags/Spring-Cloud/" style="font-size: 14px; color: #999">Spring Cloud</a> <a href="/tags/Tag/" style="font-size: 14px; color: #999">Tag</a> <a href="/tags/Time/" style="font-size: 14px; color: #999">Time</a> <a href="/tags/Typescript/" style="font-size: 14px; color: #999">Typescript</a> <a href="/tags/Uniapp/" style="font-size: 14px; color: #999">Uniapp</a> <a href="/tags/Unit-Test/" style="font-size: 14px; color: #999">Unit Test</a> <a href="/tags/VPN/" style="font-size: 14px; color: #999">VPN</a> <a href="/tags/Vue3/" style="font-size: 14px; color: #999">Vue3</a> <a href="/tags/WebFilter/" style="font-size: 14px; color: #999">WebFilter</a> <a href="/tags/XML/" style="font-size: 14px; color: #999">XML</a> <a href="/tags/async-setup/" style="font-size: 14px; color: #999">async setup</a> <a href="/tags/blog/" style="font-size: 14px; color: #999">blog</a> <a href="/tags/dubbo/" style="font-size: 14px; color: #999">dubbo</a> <a href="/tags/excerpt/" style="font-size: 14px; color: #999">excerpt</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/insert/" style="font-size: 14px; color: #999">insert</a> <a href="/tags/java/" style="font-size: 14px; color: #999">java</a> <a href="/tags/maven/" style="font-size: 14px; color: #999">maven</a> <a href="/tags/mybatis/" style="font-size: 14px; color: #999">mybatis</a> <a href="/tags/oracle/" style="font-size: 14px; color: #999">oracle</a> <a href="/tags/plugin/" style="font-size: 14px; color: #999">plugin</a> <a href="/tags/springboot/" style="font-size: 14px; color: #999">springboot</a> <a href="/tags/sql/" style="font-size: 14px; color: #999">sql</a> <a href="/tags/swing/" style="font-size: 14px; color: #999">swing</a> <a href="/tags/urlPatterns/" style="font-size: 14px; color: #999">urlPatterns</a> <a href="/tags/version/" style="font-size: 14px; color: #999">version</a> <a href="/tags/windows/" style="font-size: 14px; color: #999">windows</a> <a href="/tags/xml/" style="font-size: 14px; color: #999">xml</a> <a href="/tags/%E4%B8%BB%E9%94%AE/" style="font-size: 14px; color: #999">主键</a> <a href="/tags/%E4%BD%BF%E7%94%A8/" style="font-size: 14px; color: #999">使用</a> <a href="/tags/%E5%8F%82%E6%95%B0%E5%A4%84%E7%90%86/" style="font-size: 14px; color: #999">参数处理</a> <a href="/tags/%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C/" style="font-size: 14px; color: #999">参数校验</a> <a href="/tags/%E5%8F%91%E7%89%88/" style="font-size: 17.33px; color: #828282">发版</a> <a href="/tags/%E5%91%BD%E4%BB%A4%E8%A1%8C/" style="font-size: 14px; color: #999">命令行</a> <a href="/tags/%E5%A4%96%E9%83%A8%E4%BE%9D%E8%B5%96/" style="font-size: 14px; color: #999">外部依赖</a> <a href="/tags/%E5%A4%9A%E7%89%88%E6%9C%AC/" style="font-size: 14px; color: #999">多版本</a> <a href="/tags/%E5%A4%9A%E7%8E%AF%E5%A2%83/" style="font-size: 17.33px; color: #828282">多环境</a> <a href="/tags/%E5%A4%9A%E7%BA%A7%E7%BC%93%E5%AD%98/" style="font-size: 14px; color: #999">多级缓存</a> <a href="/tags/%E5%B1%9E%E6%80%A7%E5%A4%B1%E6%95%88/" style="font-size: 14px; color: #999">属性失效</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 17.33px; color: #828282">工具</a> <a href="/tags/%E5%BC%82%E5%B8%B8/" style="font-size: 14px; color: #999">异常</a> <a href="/tags/%E5%BC%82%E5%B8%B8%E5%88%86%E6%9E%90/" style="font-size: 14px; color: #999">异常分析</a> <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" style="font-size: 14px; color: #999">微服务</a> <a href="/tags/%E6%8B%93%E5%B1%95/" style="font-size: 14px; color: #999">拓展</a> <a href="/tags/%E6%8B%A6%E6%88%AA%E5%99%A8/" style="font-size: 17.33px; color: #828282">拦截器</a> <a href="/tags/%E6%8F%92%E4%BB%B6/" style="font-size: 17.33px; color: #828282">插件</a> <a href="/tags/%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F%E5%8C%96/" style="font-size: 14px; color: #999">日期格式化</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 17.33px; color: #828282">注解</a> <a href="/tags/%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0/" style="font-size: 14px; color: #999">版本更新</a> <a href="/tags/%E7%BB%93%E6%9E%9C%E9%9B%86/" style="font-size: 17.33px; color: #828282">结果集</a> <a href="/tags/%E8%81%9A%E5%90%88%E9%A1%B9%E7%9B%AE/" style="font-size: 14px; color: #999">聚合项目</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2/" style="font-size: 14px; color: #999">自动部署</a> <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/" style="font-size: 14px; color: #999">自定义</a> <a href="/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/" style="font-size: 14px; color: #999">装饰器</a> <a href="/tags/%E8%AF%AD%E9%9B%80/" style="font-size: 14px; color: #999">语雀</a> <a href="/tags/%E8%AF%AD%E9%9B%80%E7%BC%96%E8%BE%91%E5%99%A8/" style="font-size: 14px; color: #999">语雀编辑器</a> <a href="/tags/%E8%B8%A9%E5%9D%91%E6%97%A5%E8%AE%B0/" style="font-size: 14px; color: #999">踩坑日记</a> <a href="/tags/%E8%BF%90%E7%BB%B4/" style="font-size: 14px; color: #999">运维</a> <a href="/tags/%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83/" style="font-size: 14px; color: #999">配置中心</a> <a href="/tags/%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" style="font-size: 14px; color: #999">配置文件</a>
+    </div>
+  </section>
+
+
+  
+
+  
+
 
 </aside>
-
 
 
         
@@ -653,14 +815,14 @@
 
 <script>
   window.pdata={}
-  pdata.ispage=true;
-  pdata.postTitle="RestTemplate 使用";
+  pdata.ispage=false;
+  pdata.postTitle="";
   pdata.commentPath="";
   pdata.commentPlaceholder="";
 
   var l_header=document.getElementById("l_header");
   
-  l_header.classList.add("show");
+  l_header.classList.remove("show");
   
 </script>
 
