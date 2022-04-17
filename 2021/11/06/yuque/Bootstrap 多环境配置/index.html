@@ -468,7 +468,7 @@
 
   
   <h2 id="需求描述"><a href="#需求描述" class="headerlink" title="需求描述"></a>需求描述</h2><p>由于在 <code>bootstrap.yml</code> 文件中配置 CI/CD 的环境变量，而本地开发时并没有相关环境，所以需要手动切换其属性，在提交代码时，需要关注该配置文件是否会与云端冲突，极其浪费精力。<br>因此需要能够屏蔽本地与云端配置差异的手段。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>由于在测试过程中，发现使用 <code>bootstrap-local.yml</code> 的方式，无法成功切换环境，因此使用 spring 的指定外部配置文件的方式。通过在项目启动时，添加程序启动参数，手动指定配置文件所在路径 <code>--spring.config.location=classpath:/local/</code>。<br><strong>注意</strong>：<code>local </code> 是在 resources 下建立的目录，需要以 <code>/</code> 结尾表示其为目录。<br>当然，此处亦可精确指定加载哪个配置文件，但每个（放置在 resources 目录下的文件）都需要 <code>classpath:/</code> 开头，以表示其在类加载目录下，多个文件之间以 <code>,</code> 分割。<br>​<img src="https://cdn.nlark.com/yuque/0/2021/png/681418/1636179267460-6b3276bd-cd67-45a0-9dd4-9b163e7b95db.png#clientId=u3f67ee5e-a41f-4&from=paste&height=423&id=u408245c0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=846&originWidth=1304&originalType=binary%E2%88%B6=1&size=105006&status=done&style=none&taskId=u3fbc3b8c-a563-4b16-bfe2-ff87e8c068a&width=652" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/681418/1636179267460-6b3276bd-cd67-45a0-9dd4-9b163e7b95db.png#clientId=u3f67ee5e-a41f-4&from=paste&height=423&id=u408245c0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=846&originWidth=1304&originalType=binary%E2%88%B6=1&size=105006&status=done&style=none&taskId=u3fbc3b8c-a563-4b16-bfe2-ff87e8c068a&width=652" srcset="data:image/png;base64,666" alt="image.png"></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>由于在测试过程中，发现使用 <code>bootstrap-local.yml</code> 的方式，无法成功切换环境，因此使用 spring 的指定外部配置文件的方式。通过在项目启动时，添加程序启动参数，手动指定配置文件所在路径 <code>--spring.config.location=classpath:/local/</code>。<br><strong>注意</strong>：<code>local </code> 是在 resources 下建立的目录，需要以 <code>/</code> 结尾表示其为目录。<br>当然，此处亦可精确指定加载哪个配置文件，但每个（放置在 resources 目录下的文件）都需要 <code>classpath:/</code> 开头，以表示其在类加载目录下，多个文件之间以 <code>,</code> 分割。<br><img src="https://cdn.nlark.com/yuque/0/2021/png/681418/1636179267460-6b3276bd-cd67-45a0-9dd4-9b163e7b95db.png#clientId=u3f67ee5e-a41f-4&from=paste&height=423&id=u408245c0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=846&originWidth=1304&originalType=binary%E2%88%B6=1&size=105006&status=done&style=none&taskId=u3fbc3b8c-a563-4b16-bfe2-ff87e8c068a&width=652" class="lazyload" data-srcset="https://cdn.nlark.com/yuque/0/2021/png/681418/1636179267460-6b3276bd-cd67-45a0-9dd4-9b163e7b95db.png#clientId=u3f67ee5e-a41f-4&from=paste&height=423&id=u408245c0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=846&originWidth=1304&originalType=binary%E2%88%B6=1&size=105006&status=done&style=none&taskId=u3fbc3b8c-a563-4b16-bfe2-ff87e8c068a&width=652" srcset="data:image/png;base64,666" alt="image.png"></p>
 
   
   
@@ -503,10 +503,10 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-03-03T23:43:10+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2022-04-17T11:31:42+08:00">
   <a class='notlink'>
     <i class="fas fa-edit fa-fw" aria-hidden="true"></i>
-    <p>更新于：2022年3月3日</p>
+    <p>更新于：2022年4月17日</p>
   </a>
 </div>
 
